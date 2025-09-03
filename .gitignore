@@ -1,0 +1,42 @@
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+terraform.tfstate.backup
+terraform-local.tfstate
+
+# Logs
+*.log
+logs/
+
+# Variables locales
+*.tfvars
+!environments/*.tfvars
+!terraform.tfvars.example
+
+# SSH keys (mantener solo la pública)
+ssh/id_rsa
+ssh/id_rsa.backup
+
+# Cache y archivos temporales
+volume/cache/
+volume/tmp/
+volume/logs/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+.dockerignore
+
+# Backup files
+*.backup
+*.bak

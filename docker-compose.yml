@@ -1,0 +1,23 @@
+services:
+  localstack:
+    container_name: localstack
+    image: localstack/localstack:latest
+    ports:
+      - "4566:4566"            # Puerto principal de LocalStack
+      - "4510-4559:4510-4559"  # Puertos para servicios adicionales
+    environment:
+      - SERVICES=ec2,vpc,iam,sts,cloudformation
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+      - DOCKER_HOST=unix:///var/run/docker.sock
+      - AWS_DEFAULT_REGION=us-east-1
+      - PERSISTENCE=1
+    volumes:
+      - "${LOCALSTACK_VOLUME_DIR:-./volume}:/var/lib/localstack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    networks:
+      - localstack
+
+networks:
+  localstack:
+    driver: bridge
